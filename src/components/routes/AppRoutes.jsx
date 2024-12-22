@@ -11,6 +11,8 @@ import JobList from "../job/JobList.jsx";
 import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
 import UserLists from "../dash/local/UserLists.jsx";
+import JobDetails from "../job/JobDetails.jsx";
+import JobForm from "../job/JobForm.js";
 
 const AppRoutes = () => {
   return (
@@ -25,6 +27,9 @@ const AppRoutes = () => {
           <Route path="/*" element={<NotFound />} />
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/jobs" element={<JobList />} />
+          <Route path="/jobs/:id" element={<JobDetails />} />
+
+          <Route path="/create-job" element={<JobForm />} />
 
           {/* <Route path="/profile" element={<Profile />} /> */}
 
@@ -36,11 +41,13 @@ const AppRoutes = () => {
           {/* <Route path="/dash" element={<Dash />} /> */}
           <Route path="/profile" element={<Profile />} />
           <Route path="/dashboard" element={<Overview />} />
+          {/* <Route path="/jobs" element={<JobList />} /> */}
+          {/* <Route path="/job" element={<JobDetails />} /> */}
           <Route path="/dashboard/applied" element={<NotFound />} />
           <Route path="/dashboard/jobs" element={<NotFound />} />
           <Route path="/dashboard/update" element={<NotFound />} />
           <Route path="/dashboard/users" element={<UserLists />} />
-          <Route path="/dashboard/jobs" element={<NotFound />} />
+          <Route path="/dashboard/jobs" element={<JobList />} />
         </Routes>
       </Router>
       {/* </div> */}

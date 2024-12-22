@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signin } from "../../redux/rdx_/auth/authAPI";
 import BGCover from "../../assets/bg1.jpg";
@@ -19,7 +19,7 @@ const SignIn = () => {
     dispatch(signin(credentials));
   };
 
-  // useEffect(() => {
+  // useEffect(() => { // need to declear the useEffect
   //   // Accessing all cookies
   //   console.log("All Cookies:", document.cookie);
 

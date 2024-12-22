@@ -4,8 +4,9 @@ import authSlice from "../rdx_/auth/authSlice";
 import searchSlice from "../rdx_/search/searchSlice";
 import navSlice from "../rdx_/utils/navSlice";
 import resumeSlice from "../rdx_/resume/resumeSlice";
-import postSlice from "../rdx_/job/postsSlice";
+// import postSlice from "../rdx_/job/postsSlice";
 import userSlice from "../rdx_/user/userSlice";
+import jobSlice from "../rdx_/job/jobSlice";
 
 const store = configureStore({
   reducer: {
@@ -13,7 +14,9 @@ const store = configureStore({
     nav: navSlice,
     search: searchSlice,
 
-    posts: postSlice,
+    // posts: postSlice,
+
+    jobs: jobSlice,
     user: userSlice,
     resume: resumeSlice,
 
