@@ -1,52 +1,71 @@
-// src/features/jobs/jobSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // Base API URL
 const API_URL = "http://localhost:8080";
+axios.defaults.withCredentials = true;
+// Function to get the access token from cookies
+const getAccessToken = () => {
+  const token = document.cookie
+    .split(";")
+    .find((c) => c.startsWith("access_token="));
+  if (token) {
+    return token.split("=")[1];
+  }
+  return null;
+};
 
 // Fetch all jobs
 export const fetchJobs = createAsyncThunk("jobs/fetchJobs", async () => {
-  const response = await axios.get(`${API_URL}/jobs`);
+  const token = getAccessToken();
+  const response = await axios.get(`${API_URL}/jobs`, {
+    headers: {
+      Authorization: token ? `Bearer ${token}` : "",
+    },
+  });
   console.log(response, "fetch all job");
   return response.data;
 });
 
 // Fetch a single job
 export const fetchJob = createAsyncThunk("jobs/fetchJob", async (id) => {
-  const response = await axios.get(`${API_URL}/jobs/${id}`);
+  const token = getAccessToken();
+  const response = await axios.get(`${API_URL}/jobs/${id}`, {
+    headers: {
+      Authorization: token ? `Bearer ${token}` : "",
+    },
+  });
   console.log(response.data, "check fetch with id");
   return response.data;
 });
 
-// Create a job
+// Create a job (assuming the create endpoint requires a token)
 export const createJob = createAsyncThunk("jobs/createJob", async (jobData) => {
-  const response = await axios.post(`${API_URL}/jobs`, jobData, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("mlab_token")}`,
-    },
-  });
+  console.log(jobData, " check");
+  const response = await axios.post(`${API_URL}/jobs`, jobData);
   return response.data;
 });
 
-// Update a job
+// Update a job (assuming the update endpoint requires a token)
 export const updateJob = createAsyncThunk(
   "jobs/updateJob",
   async ({ id, jobData }) => {
+    const token = getAccessToken();
     const response = await axios.put(`${API_URL}/jobs/${id}`, jobData, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("mlab_token")}`,
+        Authorization: token ? `Bearer ${token}` : "",
       },
     });
     return response.data;
   }
 );
 
-// Delete a job
+// Delete a job (assuming the delete endpoint requires a token)
 export const deleteJob = createAsyncThunk("jobs/deleteJob", async (id) => {
+  const token = getAccessToken();
   const response = await axios.delete(`${API_URL}/jobs/${id}`, {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("mlab_token")}`,
+      Authorization: token ? `Bearer ${token}` : "",
     },
   });
   return response.data;
@@ -74,7 +93,7 @@ const jobSlice = createSlice({
         state.error = action.error.message;
       })
 
-      //   BY individual
+      //  BY individual
       .addCase(fetchJob.pending, (state) => {
         state.loading = true;
       })
@@ -90,69 +109,96 @@ const jobSlice = createSlice({
   },
 });
 
-export default jobSlice.reducer;
-
-// // src/features/posts/postsSlice.js
+export default jobSlice.reducer; // // src/features/jobs/jobSlice.js
 // import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 // import axios from "axios";
 
+// // Base API URL
 // const API_URL = "http://localhost:8080";
 
-// export const fetchJobs = createAsyncThunk(
-//   "jobs/fetchJobs",
-//   async (_, { getState }) => {
-//     // async (_, { getState }) => {
-//     // Get the token from the auth state
-//     const token = getState().auth.token;
-//     // console.log(token);
+// // Fetch all jobs
+// export const fetchJobs = createAsyncThunk("jobs/fetchJobs", async () => {
+//   const response = await axios.get(`${API_URL}/jobs`);
+//   console.log(response, "fetch all job");
+//   return response.data;
+// });
 
-//     // Configure the headers with the token
-//     const config = {
+// // Fetch a single job
+// export const fetchJob = createAsyncThunk("jobs/fetchJob", async (id) => {
+//   const response = await axios.get(`${API_URL}/jobs/${id}`);
+//   console.log(response.data, "check fetch with id");
+//   return response.data;
+// });
+
+// // Create a job
+// export const createJob = createAsyncThunk("jobs/createJob", async (jobData) => {
+//   const response = await axios.post(`${API_URL}/jobs`, jobData, {
+//     headers: {
+//       Authorization: `Bearer ${localStorage.getItem("mlab_token")}`,
+//     },
+//   });
+//   return response.data;
+// });
+
+// // Update a job
+// export const updateJob = createAsyncThunk(
+//   "jobs/updateJob",
+//   async ({ id, jobData }) => {
+//     const response = await axios.put(`${API_URL}/jobs/${id}`, jobData, {
 //       headers: {
-//         Authorization: `Bearer ${token}`,
+//         Authorization: `Bearer ${localStorage.getItem("mlab_token")}`,
 //       },
-//     };
-
-//     const response = await axios.get(`${API_URL}/allposting`, config);
-//     // console.log(response.data);
+//     });
 //     return response.data;
 //   }
 // );
 
-// const initialState = {
-//   jobs: [],
-//   status: "idle",
-//   error: null,
-//   jobID: 1,
-// };
+// // Delete a job
+// export const deleteJob = createAsyncThunk("jobs/deleteJob", async (id) => {
+//   const response = await axios.delete(`${API_URL}/jobs/${id}`, {
+//     headers: {
+//       Authorization: `Bearer ${localStorage.getItem("mlab_token")}`,
+//     },
+//   });
+//   return response.data;
+// });
 
 // const jobSlice = createSlice({
 //   name: "jobs",
-//   initialState,
-//   reducers: {
-//     jobDetails: (state, action) => {
-//       state.posts.push(action.payload);
-//     },
-//     setJobID: (state, action) => {
-//       state.postID = action.payload;
-//     },
+//   initialState: {
+//     jobs: [],
+//     job: null,
+//     loading: false,
+//     error: null,
 //   },
-
 //   extraReducers: (builder) => {
 //     builder
 //       .addCase(fetchJobs.pending, (state) => {
-//         state.status = "loading";
+//         state.loading = true;
 //       })
 //       .addCase(fetchJobs.fulfilled, (state, action) => {
-//         state.status = "succeeded";
-//         state.posts = action.payload;
+//         state.loading = false;
+//         state.jobs = action.payload;
 //       })
 //       .addCase(fetchJobs.rejected, (state, action) => {
-//         state.status = "failed";
+//         state.loading = false;
+//         state.error = action.error.message;
+//       })
+
+//       //   BY individual
+//       .addCase(fetchJob.pending, (state) => {
+//         state.loading = true;
+//       })
+//       .addCase(fetchJob.fulfilled, (state, action) => {
+//         state.loading = false;
+//         state.job = action.payload;
+//       })
+//       .addCase(fetchJob.rejected, (state, action) => {
+//         state.loading = false;
 //         state.error = action.error.message;
 //       });
+//     // Add more cases for other thunks...
 //   },
 // });
 
-// export const { jobDetails, setJobID } = jobSlice.actions;
 // export default jobSlice.reducer;
