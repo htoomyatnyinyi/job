@@ -76,8 +76,15 @@ const jobSlice = createSlice({
   initialState: {
     jobs: [],
     job: null,
+    jobId: 1, // null also can but later depen on the jobId
     loading: false,
     error: null,
+  },
+  reducers: {
+    setjobId: (state, action) => {
+      console.log(action.payload, "check at slice");
+      state.jobId = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -109,7 +116,9 @@ const jobSlice = createSlice({
   },
 });
 
-export default jobSlice.reducer; // // src/features/jobs/jobSlice.js
+export const { setjobId } = jobSlice.actions;
+export default jobSlice.reducer;
+// // src/features/jobs/jobSlice.js
 // import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 // import axios from "axios";
 

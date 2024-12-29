@@ -6,16 +6,20 @@ import BGCover from "../../assets/bg1.jpg";
 
 const SignIn = () => {
   const dispatch = useDispatch();
+
   const auth = useSelector((state) => state.auth);
+
   const identifierRef = useRef(null);
   const passwordRef = useRef(null);
 
   const handleLogin = (e) => {
     e.preventDefault();
+
     const credentials = {
       identifier: identifierRef.current.value,
       password: passwordRef.current.value,
     };
+
     dispatch(signin(credentials));
   };
 

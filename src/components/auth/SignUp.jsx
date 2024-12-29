@@ -4,9 +4,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
 import { signup } from "../../redux/rdx_/auth/authAPI";
-// import { signup } from "../../redux/rdx_/auth/authSlice"; // before use authAPI.js
 
-// import BGCover from "../../assets/pexels-iriser-1379636.jpg";
 import BGCover from "../../assets/bg1.jpg";
 
 function SignUp() {
@@ -36,7 +34,7 @@ function SignUp() {
 
     dispatch(signup(credentials))
       .then(() => {
-        navigate("/");
+        navigate("/dashboard");
       })
       .catch((error) => {
         console.error(error, "Sign Up Failed!");
