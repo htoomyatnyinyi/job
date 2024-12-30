@@ -4,6 +4,7 @@ import axios from "axios";
 // Base API URL
 const API_URL = "http://localhost:8080";
 axios.defaults.withCredentials = true;
+
 // Function to get the access token from cookies
 const getAccessToken = () => {
   const token = document.cookie
@@ -76,7 +77,7 @@ const jobSlice = createSlice({
   initialState: {
     jobs: [],
     job: null,
-    jobId: 1, // null also can but later depen on the jobId
+    jobId: 13, // null also can but later depen on the jobId
     loading: false,
     error: null,
   },
