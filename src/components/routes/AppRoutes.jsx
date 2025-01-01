@@ -12,7 +12,7 @@ import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
 import UserLists from "../dash/local/UserLists.jsx";
 import JobDetails from "../job/JobDetails.jsx";
-import JobForm from "../job/JobForm.js";
+import JobForm from "../job/JobForm.jsx";
 
 const AppRoutes = () => {
   return (

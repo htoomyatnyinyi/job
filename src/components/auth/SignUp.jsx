@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { signup } from "../../redux/rdx_/auth/authAPI";
 
-import BGCover from "../../assets/bg1.jpg";
+import BGCover from "../../assets/bg2.jpg";
 
 function SignUp() {
   const dispatch = useDispatch();

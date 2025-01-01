@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signin } from "../../redux/rdx_/auth/authAPI";
-import BGCover from "../../assets/bg1.jpg";
+import BGCover from "../../assets/bg2.jpg";
 // import Cookies from "js-cookie";
 
 const SignIn = () => {

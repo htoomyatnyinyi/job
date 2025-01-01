@@ -19,7 +19,7 @@ const JobList = () => {
 
   useEffect(() => {
     dispatch(fetchJobs());
-  }, [dispatch]);
+  }, [dispatch, jobId]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;

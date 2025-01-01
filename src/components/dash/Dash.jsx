@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "./SideBar.jsx";
-import image from "../../assets/bg1.jpg";
+import image from "../../assets/bg2.jpg";
 
 const Dash = ({ title, children }) => {
   return (

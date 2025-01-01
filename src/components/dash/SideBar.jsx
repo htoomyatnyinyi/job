@@ -1,25 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import { signout } from "../../../redux/rdx_/auth/authSlice";/
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signout } from "../../redux/rdx_/auth/authSlice";
 import { AiOutlineUserSwitch } from "react-icons/ai";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth);
+
   return (
     <div className="w-64 min-h-screen backdrop-blur-xl text-white p-4">
       <ul className="">
         {/* mt-10 */}
         <Link to="/">
-          <li className="mb-4 flex  items-center align-middle">
+          {user.authorized ? (
+            <div className="p-2 border-s-2 mb-4 align-middle justify-center ">
+              <h1 className="border-b-2">{user.profile.username}</h1>
+              <h5 className="border-b-2">{user.profile.email}</h5>
+            </div>
+          ) : (
+            <h1 className="bg-green-500 p-2">{user.error}</h1>
+          )}
+
+          {/* <li className="mb-4 flex  items-center align-middle">
             <h1 className="p-4 text-3xl font-bold shadow-2xl border-s-4">
               JobSeeker {" Hi,Htoo"}
             </h1>
             <span className="shadow-2xl text-5xl">
               <AiOutlineUserSwitch />
             </span>
-          </li>
+          </li> */}
         </Link>
         <Link to="/dashboard/profile" className="text-white">
           <li className="mb-4 hover:bg-sky-600  p-2  text-center border border-sky-900  border-b-4">

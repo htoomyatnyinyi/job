@@ -27,7 +27,7 @@ const Search = () => {
         <div className="flex items-center border-b-2 border-teal-500 py-2">
           <input
             ref={searchTermRef}
-            className="appearance-none bg-transparent border-none w-full text-teal-500 mr-3 py-1 px-2 leading-tight focus:outline-none"
+            className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
             type="text"
             placeholder="Search..."
           />

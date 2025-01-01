@@ -1,14 +1,14 @@
 import React from "react";
 import ThemeToggle from "./ThemeToggle";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   AiFillCode,
   AiFillAppstore,
   AiOutlineUser,
   AiFillDashboard,
 } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import logo from "../../assets/bg1.jpg";
-import { useSelector } from "react-redux";
+import logo from "../../assets/bg2.jpg";
 
 const NavBar = () => {
   return (
