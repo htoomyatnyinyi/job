@@ -2,11 +2,17 @@ import React from "react";
 import Search from "../search/Search";
 import image from "../../assets/bg1.jpg";
 // import Youtube from "react-youtube";
+import { ToastContainer, toast } from "react-toastify";
 
 const Home = () => {
+  const notify = () => toast("Wow so easy!");
   return (
     <div>
       <Hero />
+      <div>
+        <button onClick={notify}>Notify!</button>
+        <ToastContainer />
+      </div>
       <Features />
       <Footer DEVELOPER="__HTOO_MYAT_NYI_NYI" />
     </div>

@@ -24,7 +24,7 @@ const AppRoutes = () => {
         <Routes>
           {/* HOME ROUTES */}
           <Route path="/" element={<Home />} />
-          <Route path="/*" element={<NotFound />} />
+          {/* <Route path="/*" element={<NotFound />} /> */}
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/jobs" element={<JobList />} />
           <Route path="/jobs/:id" element={<JobDetails />} />
@@ -36,13 +36,16 @@ const AppRoutes = () => {
           {/* AUTHENTICATIONS ROUTES */}
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          {/* <Route path="/profile"  */}
 
           {/* DASHBOARD ROUTES */}
           {/* <Route path="/dash" element={<Dash />} /> */}
           <Route path="/profile" element={<Profile />} />
           <Route path="/dashboard" element={<Overview />} />
+
           {/* <Route path="/jobs" element={<JobList />} /> */}
           {/* <Route path="/job" element={<JobDetails />} /> */}
+
           <Route path="/dashboard/applied" element={<NotFound />} />
           <Route path="/dashboard/jobs" element={<NotFound />} />
           <Route path="/dashboard/update" element={<NotFound />} />

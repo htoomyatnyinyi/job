@@ -1,6 +1,6 @@
 import React from "react";
 // import logo from "../../assets/react.svg";
-import bg from "../../assets/bg1.jpg";
+import bg from "../../assets/bg2.jpg";
 import logo from "../../assets/profile.png";
 
 const ProfileHeader = () => {

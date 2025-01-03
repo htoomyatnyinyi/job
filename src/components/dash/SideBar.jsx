@@ -16,8 +16,9 @@ const Sidebar = () => {
         <Link to="/">
           {user.authorized ? (
             <div className="p-2 border-s-2 mb-4 align-middle justify-center ">
-              <h1 className="border-b-2">{user.profile.username}</h1>
+              <h1 className="border-b-2 ">{user.profile.username}</h1>
               <h5 className="border-b-2">{user.profile.email}</h5>
+              <AiOutlineUserSwitch />
             </div>
           ) : (
             <h1 className="bg-green-500 p-2">{user.error}</h1>

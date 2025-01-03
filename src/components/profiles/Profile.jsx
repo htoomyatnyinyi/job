@@ -1,14 +1,12 @@
 import React from "react";
 import ProfileHeader from "./ProfileHeader";
-import ResumePreview from "../resume/ResumePreviews";
-import UploadResume from "../resume/UploadResume";
+import ResumeUploader from "../resume/ResumeUploader";
 
 const Profile = () => {
   return (
     <div>
       <ProfileHeader />
-      <ResumePreview />
-      <UploadResume />
+      <ResumeUploader />
     </div>
   );
 };
