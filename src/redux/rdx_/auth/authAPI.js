@@ -15,11 +15,12 @@ export const signin = createAsyncThunk(
       const response = await axios.post(`${API_HOST}/signin`, credentials, {
         withCredentials: true, // Include cookies
       });
-      console.log(response.data, "ech");
+      // authToken response no use for security
       const { message, authToken, user } = response.data;
 
       // Save token and user info to localStorage
-      sessionStorage.setItem("userInfo", JSON.stringify(user));
+      // sessionStorage.setItem("userInfo", JSON.stringify(user)); // need to
+      localStorage.setItem("userInfo", JSON.stringify(user));
 
       return { message, authToken, user }; // Pass the data to Redux store
     } catch (error) {

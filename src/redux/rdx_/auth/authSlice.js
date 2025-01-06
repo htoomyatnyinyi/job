@@ -3,8 +3,8 @@ import { signin, signup } from "./authAPI";
 
 const initialState = {
   // token: localStorage.getItem("mlab") || null,
-  authorized: sessionStorage.getItem("userInfo") ? true : false,
-  profile: null || JSON.parse(sessionStorage.getItem("userInfo")),
+  authorized: localStorage.getItem("userInfo") ? true : false,
+  profile: null || JSON.parse(localStorage.getItem("userInfo")),
   mesg: null,
   loading: false,
   error: null,

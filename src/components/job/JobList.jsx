@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { fetchJobs, fetchJob, setjobId } from "../../redux/rdx_/job/jobSlice";
+import { applyJob, saveJob } from "../../redux/rdx_/job/featureSlice";
 
 import BCover from "../../assets/bg2.jpg";
 
 const JobList = () => {
   const dispatch = useDispatch();
-
   const {
     jobs = [],
     loading,
@@ -16,17 +16,32 @@ const JobList = () => {
     job,
     jobId,
   } = useSelector((state) => state.jobs);
+  // const { userId } = useSelector((state) => state.auth.profile.id);
+  const resumeId = 1;
 
+  // FETCH JOBLIST BY USING EFFECT
   useEffect(() => {
     dispatch(fetchJobs());
-  }, [dispatch, jobId]);
+  }, [dispatch]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return;
+  <div>
+    <p className="p-10 m-10 bg-green-500">Loading...</p>;
+    {/* <image src={BCover} alt="loading image" /> */}
+  </div>;
   if (error) return <p>Error: {error}</p>;
 
   const fetchJobDetails = (id) => {
     dispatch(setjobId(id)); // Set the selected job ID
     dispatch(fetchJob(id)); // Fetch job details for the selected job
+  };
+
+  const handleApplyJob = () => {
+    dispatch(applyJob({ post_id: jobId, resume_id: resumeId }));
+  };
+
+  const handleSavedJob = () => {
+    dispatch(saveJob({ post_id: jobId }));
   };
 
   const sectionStyle = {
@@ -85,16 +100,17 @@ const JobList = () => {
                     <p>{job.employmentType}</p>
                     <div className="space-x-2 pt-3">
                       <button
-                        onClick={() => alert("Applied")}
+                        onClick={handleApplyJob}
                         className="bg-black hover:bg-sky-800 text-white rounded-md p-2 mt-1"
                       >
                         Apply Now
                       </button>
+
                       <button
-                        onClick={() => alert("Add to Bookmark")}
+                        onClick={handleSavedJob}
                         className="bg-black hover:bg-yellow-800 text-white rounded-md p-2 mt-1"
                       >
-                        Save Post
+                        Save Job
                       </button>
                     </div>
                   </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // import { signout } from "../../../redux/rdx_/auth/authSlice";/
 import { useDispatch, useSelector } from "react-redux";
 import { signout } from "../../redux/rdx_/auth/authSlice";
-import { AiOutlineUserSwitch } from "react-icons/ai";
+// import { AiOutlineUserSwitch } from "react-icons/ai";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,6 @@ const Sidebar = () => {
             <div className="p-2 border-s-2 mb-4 align-middle justify-center ">
               <h1 className="border-b-2 ">{user.profile.username}</h1>
               <h5 className="border-b-2">{user.profile.email}</h5>
-              <AiOutlineUserSwitch />
             </div>
           ) : (
             <h1 className="bg-green-500 p-2">{user.error}</h1>
@@ -59,7 +58,10 @@ const Sidebar = () => {
             Add New Job
           </li>
         </Link>
-        <button onClick={() => dispatch(signout())} className="text-white">
+        <button
+          onClick={() => dispatch(() => signout())}
+          className="text-white"
+        >
           <li className="absolute bottom-20 mb-2 left-4 right-4 hover:bg-lime-600 p-2  text-center border border-red-900 border-b-4">
             Sign Out
           </li>

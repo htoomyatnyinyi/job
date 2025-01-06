@@ -1,28 +1,41 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+// import axios from "axios";
 
 const API_URL = "http://localhost:8080";
 
-// Fetch users with token
+// // Fetch users with token
+// export const fetchUsers = createAsyncThunk(
+//   "users/fetchUsers",
+//   async (_, { getState }) => {
+//     // Get the token from the auth state
+//     // const token = getState().auth.token;
+//     // console.log(token);
+
+//     // Configure the headers with the token
+//     // const config = {
+//     //   headers: {
+//     //     Authorization: `Bearer ${token}`,
+//     //   },
+//     // };
+
+//     // // Send the request with the token
+//     // const response = await axios.get(`${API_URL}/users`, config);
+//     const response = await axios.get(`${API_URL}/users`);
+
+//     return response.data;
+//   }
+// );
 export const fetchUsers = createAsyncThunk(
-  "users/fetchUsers",
-  async (_, { getState }) => {
-    // Get the token from the auth state
-    // const token = getState().auth.token;
-    // console.log(token);
-
-    // Configure the headers with the token
-    // const config = {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // };
-
-    // // Send the request with the token
-    // const response = await axios.get(`${API_URL}/users`, config);
-    const response = await axios.get(`${API_URL}/users`);
-
-    return response.data;
+  "auth/fetchUsers",
+  async (_, { rejectWithValue }) => {
+    const response = await fetch(`${API_URL}/users`);
+    if (!response.ok) {
+      return rejectWithValue({
+        status: response.status,
+        message: "Unauthorized",
+      });
+    }
+    return response.json();
   }
 );
 

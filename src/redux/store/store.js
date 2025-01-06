@@ -1,27 +1,24 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterSlice from "../rdx_/test/counterSlice";
-import authSlice from "../rdx_/auth/authSlice";
-import searchSlice from "../rdx_/search/searchSlice";
-import navSlice from "../rdx_/utils/navSlice";
-import resumeSlice from "../rdx_/resume/resumeSlice";
-// import postSlice from "../rdx_/job/postsSlice";
-import userSlice from "../rdx_/user/userSlice";
-import jobSlice from "../rdx_/job/jobSlice";
+import rootReducer from "./rootReducer";
+import authMiddleware from "./middleware/authMiddleware";
+import loggerMiddleware from "./middleware/loggerMiddleware";
+
+const errorHandlingMiddleware = (store) => (next) => (action) => {
+  if (action.type.endsWith("/rejected")) {
+    console.error("Error occurred:", action.payload);
+  }
+  return next(action);
+};
 
 const store = configureStore({
-  reducer: {
-    auth: authSlice,
-    nav: navSlice,
-    search: searchSlice,
-
-    // posts: postSlice,
-
-    jobs: jobSlice,
-    user: userSlice,
-    resume: resumeSlice,
-
-    counter: counterSlice,
-  },
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(
+      loggerMiddleware,
+      authMiddleware,
+      errorHandlingMiddleware
+    ),
+  devTools: process.env.NODE_ENV !== "production", // Enable Redux DevTools in non-production environments
 });
 
 export default store;
