@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-// import axios from "axios";
+import axios from "axios";
 
 const API_URL = "http://localhost:8080";
 
@@ -25,17 +25,52 @@ const API_URL = "http://localhost:8080";
 //     return response.data;
 //   }
 // );
+// export const fetchUsers = createAsyncThunk(
+//   "auth/fetchUsers",
+//   async (_, { rejectWithValue }) => {
+//     const response = await fetch(`${API_URL}/users`);
+//     if (!response.ok) {
+//       return rejectWithValue({
+//         status: response.status,
+//         message: "Unauthorized",
+//       });
+//     }
+//     return response.json();
+//   }
+// );
+
+const axiosInstance = axios.create({
+  withCredentials: true, // This line enables cookie-based credentials
+});
+
 export const fetchUsers = createAsyncThunk(
   "auth/fetchUsers",
   async (_, { rejectWithValue }) => {
-    const response = await fetch(`${API_URL}/users`);
-    if (!response.ok) {
-      return rejectWithValue({
-        status: response.status,
-        message: "Unauthorized",
-      });
+    try {
+      const response = await axiosInstance.get(`${API_URL}/users`);
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        return rejectWithValue({
+          status: error.response.status,
+          message: error.response.data.message || "Error fetching users",
+        });
+      } else if (error.request) {
+        // The request was made but no response was received
+        return rejectWithValue({
+          status: 500,
+          message: "No response from server",
+        });
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        return rejectWithValue({
+          status: 500,
+          message: "An error occurred",
+        });
+      }
     }
-    return response.json();
   }
 );
 

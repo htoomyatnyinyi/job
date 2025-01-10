@@ -1,23 +1,21 @@
-import React from "react";
-
-const UserLists = () => {
-  return <div>UserLists</div>;
-};
-
-export default UserLists; // // src/components/UserLists.js
+// // src/components/UserLists.js
 // import React, { useEffect } from "react";
 // import { useDispatch, useSelector } from "react-redux";
-// import { fetchUsers } from "../../../redux/rdx_/user/userSlice";
+// // import { fetchUsers } from "../../../redux/rdx_/user/userSlice";
+// import { dashboardJobs } from "../../../redux/rdx_/dashboard/dashAPI";
+// import { dashboardUsers } from "../../../redux/rdx_/dashboard/dashAPI";
 
 // const UserLists = () => {
 //   const dispatch = useDispatch();
-//   const users = useSelector((state) => state.user.user);
+//   const users = useSelector((state) => state.user.users);
 //   const userStatus = useSelector((state) => state.user.status);
 //   const error = useSelector((state) => state.user.error);
+//   console.log(users, " check console");
 
 //   useEffect(() => {
 //     if (userStatus === "idle") {
-//       dispatch(fetchUsers());
+//       dispatch(dashboardJobs());
+//       dispatch(dashboardUsers());
 //     }
 //   }, [userStatus, dispatch]);
 
