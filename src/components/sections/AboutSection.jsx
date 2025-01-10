@@ -1,6 +1,7 @@
 import React from "react";
 // import { v4 as uuid } from "uuid";
-import BG from "../assets/bg1.jpg";
+// import BG from "../assets/bg2.jpg";
+import image from "../../assets/bg2.jpg";
 // import BG from "../../assets/pexels-eberhardgross-691668.jpg";
 // import JobListings from "../pages/jobs/JobListings";
 // import BGImage from "../../assets/pexels-iriser-1379636.jpg";
@@ -51,7 +52,7 @@ const AboutSection = () => {
   ];
 
   const sectionStyle = {
-    backgroundImage: `url(${BG})`,
+    backgroundImage: `url(${image})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   };
@@ -65,11 +66,9 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-20 text-center" style={sectionStyle}>
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-sky-600 mb-6">
-          Find Your Dream Jobs
-        </h2>
+        <h2 className="text-3xl font-bold  mb-6">Find Your Dream Jobs</h2>
         {/* <JobListings /> */}
-        <p className="text-lg text-gray-700 mb-6">
+        <p className="text-lg  mb-6">
           We are dedicated to providing the best services to our clients. Our
           team of experts works hard to meet and exceed your expectations.
         </p>

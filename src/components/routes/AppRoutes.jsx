@@ -14,6 +14,7 @@ import SignUp from "../auth/SignUp";
 import JobDetails from "../job/JobDetails.jsx";
 import JobForm from "../job/JobForm.jsx";
 import Info from "../dash/local/Info.jsx";
+import Resume from "../resume/Resume.jsx";
 
 const AppRoutes = () => {
   return (
@@ -49,6 +50,7 @@ const AppRoutes = () => {
           <Route path="/dashboard/update" element={<NotFound />} />
           {/* <Route path="/dashboard/users" element={<UserLists />} /> */}
           <Route path="/dashboard/jobs" element={<JobList />} />
+          <Route path="/dashboard/resume" element={<Resume />} />
 
           {/* <Route path="/jobs" element={<JobList />} /> */}
           {/* <Route path="/job" element={<JobDetails />} /> */}

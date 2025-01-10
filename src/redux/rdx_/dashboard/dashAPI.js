@@ -7,6 +7,34 @@ const axiosInstance = axios.create({
   withCredentials: true, // This line enables cookie-based credentials
 });
 
+// for graph
+export const dashboardGraph = createAsyncThunk(
+  "dashboard/fetchData", // Changed action type for better organization
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.get(`${API_URL}/dashboard`);
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        return rejectWithValue({
+          status: error.response.status,
+          message: error.response.data.message || "Error fetching users",
+        });
+      } else if (error.request) {
+        return rejectWithValue({
+          status: 500,
+          message: "No response from server",
+        });
+      } else {
+        return rejectWithValue({
+          status: 500,
+          message: "An error occurred",
+        });
+      }
+    }
+  }
+);
+
 export const dashboardUsers = createAsyncThunk(
   "dashboard/fetchUsers", // Changed action type for better organization
   async (_, { rejectWithValue }) => {
@@ -45,6 +73,34 @@ export const dashboardJobs = createAsyncThunk(
         return rejectWithValue({
           status: error.response.status,
           message: error.response.data.message || "Error fetching jobs",
+        });
+      } else if (error.request) {
+        return rejectWithValue({
+          status: 500,
+          message: "No response from server",
+        });
+      } else {
+        return rejectWithValue({
+          status: 500,
+          message: "An error occurred",
+        });
+      }
+    }
+  }
+);
+
+// New thunk for deleting a user
+export const deleteUser = createAsyncThunk(
+  "dashboard/deleteUser",
+  async (userId, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.delete(`${API_URL}/users/${userId}`);
+      return response.data; // Assuming the response contains a success message or data
+    } catch (error) {
+      if (error.response) {
+        return rejectWithValue({
+          status: error.response.status,
+          message: error.response.data.message || "Error deleting user",
         });
       } else if (error.request) {
         return rejectWithValue({
@@ -118,7 +174,9 @@ export const updateJob = createAsyncThunk(
       }
     }
   }
-); // import { createAsyncThunk } from "@reduxjs/toolkit";
+);
+
+// import { createAsyncThunk } from "@reduxjs/toolkit";
 // import axios from "axios";
 
 // const API_URL = "http://localhost:8080";

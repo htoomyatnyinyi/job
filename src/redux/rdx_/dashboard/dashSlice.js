@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { dashboardJobs, dashboardUsers } from "./dashAPI";
+import { dashboardGraph, dashboardJobs, dashboardUsers } from "./dashAPI";
 
 const initialState = {
-  info: [],
   dash: {
     users: [],
     users_status: "idle",
@@ -12,6 +11,8 @@ const initialState = {
     jobs_error: null,
     applied: [],
   },
+  info: [],
+  data: [],
   status: "idle", // Consider removing this if unused
   error: null,
   isLoading: false,
@@ -51,6 +52,16 @@ const dashboardInfoSlice = createSlice({
       .addCase(dashboardJobs.rejected, (state, action) => {
         state.dash.jobs_status = "failed";
         state.dash.jobs_error = action.error.message;
+        state.isLoading = false;
+      })
+      .addCase(dashboardGraph.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(dashboardGraph.fulfilled, (state, action) => {
+        state.dash.data = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(dashboardGraph.rejected, (state) => {
         state.isLoading = false;
       });
   },

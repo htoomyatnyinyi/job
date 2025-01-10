@@ -1,7 +1,9 @@
 import React from "react";
 import Dash from "../Dash";
-import LineGraph from "../global/LineGraph";
 import Info from "./Info";
+import LineGraph from "../global/LineGraph";
+import ResumeUploader from "../../resume/ResumeUploader";
+
 const Overview = () => {
   return (
     <>
@@ -20,6 +22,7 @@ const Overview = () => {
           </div>
         </div>
       </Dash>
+      <ResumeUploader />
       {/* <UserLists /> */}
     </>
   );

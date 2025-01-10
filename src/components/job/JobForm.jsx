@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createJob } from "../../redux/rdx_/job/jobSlice";
+import image from "../../assets/bg3.jpg";
+import { Link } from "react-router-dom";
 
 const JobForm = () => {
   const initialData = {
@@ -79,13 +81,22 @@ const JobForm = () => {
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto text-green-600 dark:text-yellow-500 rounded-lg shadow-md">
+    <div
+      style={{ backgroundImage: `url(${image})` }}
+      className="bg-cover bg-center bg-no-repeat p-6 max-w-4xl mx-auto backdrop:blur-lg text-green-600 dark:text-yellow-500 rounded-lg shadow-md"
+    >
       {error && (
         <div className="mb-4 p-4 bg-red-100 text-red-700 rounded">{error}</div>
       )}
       {!previewMode ? (
         <form onSubmit={handleSubmit} className="space-y-6">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+          <Link
+            to="/dashboard"
+            className="mb-4 hover:bg-sky-900 p-2  text-center border border-sky-900 border-b-4"
+          >
+            dashboard
+          </Link>
+          <h2 className="text-2xl  font-bold text-gray-900 dark:text-white">
             Create Job Posting
           </h2>
           <div className="space-y-4">
