@@ -24,7 +24,9 @@ const ResumeForm = () => {
       });
     }
   };
-
+  const check = () => {
+    console.log(formData, " check submit");
+  };
   // Add new experience entry
   const addExperience = () => {
     setFormData({
@@ -42,8 +44,8 @@ const ResumeForm = () => {
 
   // Form sections
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4">
-      <div className="w-full max-w-3xl bg-white rounded-lg shadow p-6">
+    <div className="min-h-screen backdrop-blur-xl dark:text-red-400  flex flex-col items-center p-4">
+      <div className="w-full max-w-3xl bg-sky-400 rounded-lg shadow p-6">
         <h1 className="text-2xl font-bold text-gray-800 mb-6">
           Step {step}:{" "}
           {step === 1
@@ -246,7 +248,7 @@ const ResumeForm = () => {
             </button>
           ) : (
             <button
-              onClick={() => alert("Resume submitted!")}
+              onClick={() => check()}
               className="bg-green-500 text-white px-4 py-2 rounded"
             >
               Submit
@@ -259,41 +261,3 @@ const ResumeForm = () => {
 };
 
 export default ResumeForm;
-// {
-//     "personalInfo": {
-//       "name": "Htoo Myat Nyi Nyi",
-//       "email": "htoomyatnyinyi@gmail.com",
-//       "phone": "98234908"
-//     },
-//     "summary": {
-//       "null": "[object Object]f"
-//     },
-//     "experience": [
-//       {
-//         "role": "fewfweaf",
-//         "company": "fwaefawef",
-//         "duration": "2019-2024",
-//         "description": "flakwejflakwfjlkefja;wklefjakl;wefjawlekfjl"
-//       },
-//       {
-//         "role": "fawefwef",
-//         "company": "fawefef",
-//         "duration": "fawefe",
-//         "description": "fawef"
-//       }
-//     ],
-//     "skills": [
-//       "fwae",
-//       "felkfj",
-//       "fjlawekfjkwef",
-//       "welfkjawef",
-//       "fwealkfjwelkf",
-//       "welkfjawelkf",
-//       ""
-//     ],
-//     "education": {
-//       "degree": "bacheoler degree",
-//       "school": "fjalwekfjlkjfa school",
-//       "year": "2342"
-//     }
-//   }

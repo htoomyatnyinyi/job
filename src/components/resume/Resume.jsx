@@ -3,16 +3,18 @@ import ResumeForm from "./ResumeForm";
 
 const Resume = () => {
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
+    <div className="backdrop-blur-lg shadow-xl min-h-screen p-6">
       <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-8">
         {/* Header Section */}
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-800">John Doe</h1>
+          <h1 className="text-4xl font-bold text-gray-800">
+            HTOO MYAT NYI NYI
+          </h1>
           <p className="text-lg text-gray-600">
             Facility Technician | M&E Specialist
           </p>
           <p className="text-gray-500">
-            Email: john.doe@example.com | Phone: +123 456 7890
+            Email: htoomyatnyinyi@lab.com | Phone: +123 456 7890
           </p>
         </div>
 
