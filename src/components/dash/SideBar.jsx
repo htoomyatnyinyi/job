@@ -13,7 +13,7 @@ const Sidebar = () => {
     <div className="w-64 min-h-screen backdrop-blur-xl text-white p-4">
       <ul className="">
         {/* mt-10 */}
-        <Link to="/">
+        <Link to="/profile">
           {user.authorized ? (
             <div className="p-2 border-s-2 mb-4 align-middle justify-center ">
               <h1 className="border-b-2 ">{user.profile.username}</h1>
@@ -32,32 +32,34 @@ const Sidebar = () => {
             </span>
           </li> */}
         </Link>
-        <Link to="/dashboard/profile" className="text-white">
+        <Link to="/dashboard/profile">
           <li className="mb-4 hover:bg-sky-600  p-2  text-center border border-sky-900  border-b-4">
             UserProfile
           </li>
         </Link>
         {/* <li className="mb-4 bg-sky-900 p-2  text-center"> */}
-        <Link to="/dashboard/applied" className="text-white">
+        <Link to="/dashboard/applied"></Link>
+        <Link to="/create-job">
           <li className="mb-4 hover:bg-sky-900 p-2  text-center border border-sky-900 border-b-4">
-            Applied Jobs
+            Create New Job
           </li>
         </Link>
-        <Link to="/dashboard/jobs" className="text-white">
+        <Link to="/dashboard/jobs">
           <li className="mb-4 hover:bg-sky-900 p-2  text-center border border-sky-900 border-b-4">
-            Job Lists
+            Jobs List
           </li>
         </Link>
-        <Link to="/dashboard/deleteuser" className="text-white">
+        <Link to="/dashboard/users">
           <li className="mb-4 hover:bg-sky-900 p-2  text-center border border-sky-900 border-b-4">
-            Delete User
+            Users List
           </li>
         </Link>
-        <Link to="/dashboard/addnewjob" className="text-white">
+        <Link to="/dashboard/resume">
           <li className="mb-4 hover:bg-sky-900 p-2  text-center border border-sky-900 border-b-4">
-            Add New Job
+            Resume Settings
           </li>
         </Link>
+
         <button
           onClick={() => dispatch(() => signout())}
           className="text-white"

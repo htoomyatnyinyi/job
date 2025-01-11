@@ -10,9 +10,11 @@ import Timeline from "../pages/Timeline";
 import JobList from "../job/JobList.jsx";
 import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
-import UserLists from "../dash/local/UserLists.jsx";
+// import UserLists from "../dash/local/UserLists.jsx";
 import JobDetails from "../job/JobDetails.jsx";
 import JobForm from "../job/JobForm.jsx";
+import Info from "../dash/local/Info.jsx";
+import Resume from "../resume/Resume.jsx";
 
 const AppRoutes = () => {
   return (
@@ -24,6 +26,7 @@ const AppRoutes = () => {
         <Routes>
           {/* HOME ROUTES */}
           <Route path="/" element={<Home />} />
+
           {/* <Route path="/*" element={<NotFound />} /> */}
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/jobs" element={<JobList />} />
@@ -31,26 +34,26 @@ const AppRoutes = () => {
 
           <Route path="/create-job" element={<JobForm />} />
 
-          {/* <Route path="/profile" element={<Profile />} /> */}
-
           {/* AUTHENTICATIONS ROUTES */}
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          {/* <Route path="/profile"  */}
+
+          {/* USER PROFILE ROUTES */}
+          <Route path="/profile" element={<Profile />} />
 
           {/* DASHBOARD ROUTES */}
           {/* <Route path="/dash" element={<Dash />} /> */}
-          <Route path="/profile" element={<Profile />} />
           <Route path="/dashboard" element={<Overview />} />
-
-          {/* <Route path="/jobs" element={<JobList />} /> */}
-          {/* <Route path="/job" element={<JobDetails />} /> */}
-
+          <Route path="/dashboard/profile" element={<Info />} />
           <Route path="/dashboard/applied" element={<NotFound />} />
           <Route path="/dashboard/jobs" element={<NotFound />} />
           <Route path="/dashboard/update" element={<NotFound />} />
-          <Route path="/dashboard/users" element={<UserLists />} />
+          {/* <Route path="/dashboard/users" element={<UserLists />} /> */}
           <Route path="/dashboard/jobs" element={<JobList />} />
+          <Route path="/dashboard/resume" element={<Resume />} />
+
+          {/* <Route path="/jobs" element={<JobList />} /> */}
+          {/* <Route path="/job" element={<JobDetails />} /> */}
         </Routes>
       </Router>
       {/* </div> */}

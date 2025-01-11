@@ -5,6 +5,7 @@ import userReducer from "../rdx_/user/userSlice";
 import resumeReducer from "../rdx_/resume/resumeSlice";
 import featureReducer from "../rdx_/job/featureSlice";
 import searchReducer from "../rdx_/search/searchSlice";
+import dashboardInfoReducer from "../rdx_/dashboard/dashSlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   jobs: jobReducer,
   resume: resumeReducer,
   features: featureReducer,
+  dashboard: dashboardInfoReducer,
 });
 
 export default rootReducer;

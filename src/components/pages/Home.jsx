@@ -1,20 +1,23 @@
 import React from "react";
 import Search from "../search/Search";
-import image from "../../assets/bg1.jpg";
+// import image from "../../assets/bg1.jpg";
+import image from "../../assets/bg2.jpg";
 // import Youtube from "react-youtube";
 import { ToastContainer, toast } from "react-toastify";
+import AboutSection from "../sections/AboutSection";
 
 const Home = () => {
   const notify = () => toast("Wow so easy!");
   return (
     <div>
       <Hero />
+      <AboutSection />
+      <Features />
+      <Footer DEVELOPER="__HTOO_MYAT_NYI_NYI" />
       <div>
         <button onClick={notify}>Notify!</button>
         <ToastContainer />
       </div>
-      <Features />
-      <Footer DEVELOPER="__HTOO_MYAT_NYI_NYI" />
     </div>
   );
 };
@@ -27,7 +30,7 @@ function Hero() {
   return (
     <section className="relative">
       <div
-        className="bg-cover bg-center bg-no-repeat"
+        className="bg-cover bg-center bg-no-repeat max-h-screen"
         style={{ backgroundImage: `url(${image})` }}
       >
         {/* <div className="absolute inset-0 bg-black bg-opacity-50"></div> */}
@@ -38,6 +41,10 @@ function Hero() {
           </h1>
           <p className="text-lg text-white mb-8">
             Discover the future of ___YOUR_CARRIER____
+          </p>
+          <p className="text-lg text-gray-700 mb-6">
+            We are dedicated to providing the best services to our clients. Our
+            team of experts works hard to meet and exceed your expectations.
           </p>
           <button
             onClick={() => console.log("clicked")}

@@ -1,7 +1,8 @@
 import React from "react";
 import Dash from "../Dash";
+import Info from "./Info";
 import LineGraph from "../global/LineGraph";
-import UserLists from "./UserLists";
+import ResumeUploader from "../../resume/ResumeUploader";
 
 const Overview = () => {
   return (
@@ -16,11 +17,13 @@ const Overview = () => {
             <div className="col-span-1">
               <LineGraph />
             </div>
+            <Info />
             <div className="col-span-1 grid grid-cols-2 gap-2"></div>
           </div>
         </div>
       </Dash>
-      <UserLists />
+      <ResumeUploader />
+      {/* <UserLists /> */}
     </>
   );
 };
