@@ -30,7 +30,7 @@ const NavBar = () => {
 
         {/* Navigation */}
         <ul className="flex space-x-6 p-2">
-          <li>
+          {/* <li>
             <Link
               to="/timeline"
               className="flex items-center space-x-2 border-b-4 hover:border-sky-600"
@@ -38,7 +38,7 @@ const NavBar = () => {
               <AiFillAppstore />
               <span>Timelime</span>
             </Link>
-          </li>
+          </li> */}
 
           <li>
             <Link
@@ -49,7 +49,7 @@ const NavBar = () => {
               <span>Job</span>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               to="/"
               className="flex items-center space-x-2 border-b-4 hover:border-sky-600"
@@ -57,7 +57,7 @@ const NavBar = () => {
               <AiFillCode />
               <span>About Us</span>
             </Link>
-          </li>
+          </li> */}
         </ul>
 
         {/* Theme Toggle and Profile */}

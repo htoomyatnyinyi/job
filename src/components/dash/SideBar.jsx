@@ -38,7 +38,7 @@ const Sidebar = () => {
           </li>
         </Link>
         {/* <li className="mb-4 bg-sky-900 p-2  text-center"> */}
-        <Link to="/dashboard/applied"></Link>
+        <Link to="/dashboard/applied">Applied Job</Link>
         <Link to="/create-job">
           <li className="mb-4 hover:bg-sky-900 p-2  text-center border border-sky-900 border-b-4">
             Create New Job
@@ -51,12 +51,12 @@ const Sidebar = () => {
         </Link>
         <Link to="/dashboard/users">
           <li className="mb-4 hover:bg-sky-900 p-2  text-center border border-sky-900 border-b-4">
-            Users List
+            Resume Uploader
           </li>
         </Link>
         <Link to="/dashboard/resume">
           <li className="mb-4 hover:bg-sky-900 p-2  text-center border border-sky-900 border-b-4">
-            Resume Settings
+            Resume
           </li>
         </Link>
 
