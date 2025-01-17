@@ -3,11 +3,14 @@ import Dash from "../Dash";
 import Info from "./Info";
 import LineGraph from "../global/LineGraph";
 import ResumeUploader from "../../resume/ResumeUploader";
+import DashboardMain from "./DashboardMain";
+import DashJobList from "./DashJobList";
 
 const Overview = () => {
   return (
     <>
-      <Dash>
+      <Dash title={DashboardMain}>
+        <DashboardMain />
         <div className="h-screen overflow-y-auto scrollbar-hide">
           <p className="text-white font-bold text-3xl">
             Welcome to the dashboard overview.
@@ -22,6 +25,7 @@ const Overview = () => {
           </div>
         </div>
       </Dash>
+      <DashJobList />
       <ResumeUploader />
       {/* <UserLists /> */}
     </>

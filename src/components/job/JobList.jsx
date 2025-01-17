@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-
 import { fetchJobs, fetchJob, setjobId } from "../../redux/rdx_/job/jobSlice";
 import { applyJob, saveJob } from "../../redux/rdx_/job/featureSlice";
 
-import BCover from "../../assets/bg2.jpg";
+import Search from "../search/Search";
+import JobDetails from "./JobDetails";
+
+// import BCover from "../../assets/bg2.jpg";
 
 const JobList = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const JobList = () => {
   );
 
   const fetchJobDetails = (id) => {
-    dispatch(setjobId(id));
+    dispatch(setjobId(id)); // Even SetJobId is comment details section also no effective
     dispatch(fetchJob(id));
   };
 
@@ -51,11 +52,11 @@ const JobList = () => {
     dispatch(saveJob({ post_id: jobId }));
   };
 
-  const sectionStyle = {
-    backgroundImage: `url(${BCover})`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-  };
+  // const sectionStyle = {
+  //   backgroundImage: `url(${BCover})`,
+  //   backgroundSize: "cover",
+  //   backgroundRepeat: "no-repeat",
+  // };
 
   if (loading) {
     return <div className="p-10 m-10 bg-green-500">Loading...</div>;
@@ -67,20 +68,21 @@ const JobList = () => {
 
   return (
     <div
-      className="bg-cover bg-no-repeat text-lime-500 h-screen"
-      style={sectionStyle}
+      className="bg-cover bg-no-repeat bg-sky-950 text-lime-500 h-screen"
+      // style={sectionStyle}
     >
-      <Link to="/create-job" className="text-white underline m-2 block">
-        Create New Job
-      </Link>
+      <div className="">
+        <Search />
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 p-2 h-full">
         <JobListSection jobs={mappedJobs} onFetchDetails={fetchJobDetails} />
-        <JobDetailsSection
+        <JobDetails job={job} />
+        {/* <JobDetailsSection
           job={job}
           jobId={jobId}
           handleApplyJob={handleApplyJob}
           handleSaveJob={handleSaveJob}
-        />
+        /> */}
       </div>
     </div>
   );

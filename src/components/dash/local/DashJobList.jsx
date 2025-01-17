@@ -7,10 +7,15 @@ import {
 
 const DashJobList = () => {
   const dispatch = useDispatch();
-  const dashboard = useSelector((state) => state.dashboard);
+  const dashboard = useSelector((state) => state.dashboard.dash);
   const status = useSelector((state) => state.dashboard.status);
   const error = useSelector((state) => state.dashboard.error);
   console.log(dashboard, "check data ");
+
+  const { users, jobs } = dashboard;
+
+  console.log(users, "d_users", jobs, " d_jobs");
+  // const users = useSelector((state) => state.users);
 
   useEffect(() => {
     if (status === "idle") {
@@ -39,10 +44,7 @@ const DashJobList = () => {
   return (
     <div>
       <div className="container">
-        <h1
-          className="backdrop-blur-sm hover:backdrop-blur-md
-  p-2 m-1 text-3xl font-bold text-white "
-        >
+        <h1 className="backdrop-blur-sm hover:backdrop-blur-md p-2 m-1 text-3xl font-bold text-white ">
           User Lists
         </h1>
         {content}

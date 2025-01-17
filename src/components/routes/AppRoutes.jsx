@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import NavBar from "./NavBar";
-import Profile from "../profiles/Profile";
+// import Profile from "../profiles/Profile";
 import Overview from "../dash/local/Overview.jsx";
 import Timeline from "../pages/Timeline";
 import JobList from "../job/JobList.jsx";
@@ -15,6 +15,7 @@ import JobDetails from "../job/JobDetails.jsx";
 import JobForm from "../job/JobForm.jsx";
 import Info from "../dash/local/Info.jsx";
 import Resume from "../resume/Resume.jsx";
+import Account from "../profiles/Account.jsx";
 
 const AppRoutes = () => {
   return (
@@ -39,7 +40,8 @@ const AppRoutes = () => {
           <Route path="/signup" element={<SignUp />} />
 
           {/* USER PROFILE ROUTES */}
-          <Route path="/profile" element={<Profile />} />
+          {/* <Route path="/profile" element={<Profile />} /> */}
+          <Route path="/profile/me" element={<Account />} />
 
           {/* DASHBOARD ROUTES */}
           {/* <Route path="/dash" element={<Dash />} /> */}

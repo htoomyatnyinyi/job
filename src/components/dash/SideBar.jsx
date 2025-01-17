@@ -13,7 +13,7 @@ const Sidebar = () => {
     <div className="w-64 min-h-screen backdrop-blur-xl text-white p-4">
       <ul className="">
         {/* mt-10 */}
-        <Link to="/profile">
+        <Link to="/dashboard">
           {user.authorized ? (
             <div className="p-2 border-s-2 mb-4 align-middle justify-center ">
               <h1 className="border-b-2 ">{user.profile.username}</h1>

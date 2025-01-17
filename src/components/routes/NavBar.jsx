@@ -12,10 +12,10 @@ import logo from "../../assets/bg2.jpg";
 
 const NavBar = () => {
   return (
-    <div className="sticky top-0 ">
+    <div className="sticky top-0 bg-sky-950 ">
       <div
         // style={{ backgroundImage: `url(${backgroundImage})` }}
-        className="flex justify-around items-center p-2 backdrop-blur-lg absoulute"
+        className="flex justify-around items-center p-2 backdrop-blur-3xl absoulute"
       >
         {/* Logo */}
         <Link to="/">
@@ -87,7 +87,7 @@ const AccountToggle = () => {
             <AiFillDashboard />
           </Link>
           <Link
-            to="/profile"
+            to="/profile/me"
             className="flex items-center space-x-2 p-2 border-b-4 hover:border-sky-600"
           >
             <AiOutlineUser />

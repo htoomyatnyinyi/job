@@ -35,7 +35,7 @@ function AddUser() {
 
     dispatch(signup(credentials))
       .then(() => {
-        navigate("/");
+        navigate("/signin");
       })
       .catch((error) => {
         console.error(error, "Sign Up Failed!");
