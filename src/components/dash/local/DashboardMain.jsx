@@ -1,17 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setCount, updateCount } from "../../../redux/rdx_/dashboard/dashSlice";
 
 const DashboardMain = () => {
-  const stats = [
-    { title: "Applied Jobs", count: 15 },
-    { title: "Saved Jobs", count: 10 },
-    { title: "Notifications", count: 5 },
-    { title: "Users", count: 1234 },
-    { title: "Jobs", count: 434 },
-  ];
+  const dispatch = useDispatch();
   const { username } = useSelector((state) => state.auth.profile);
   const { jobs, users } = useSelector((state) => state.dashboard.dash);
+  const stats = useSelector((state) => state.dashboard.stats);
 
+  //   console.log(
+  //     jobs.length,
+  //     users.length,
+  //     useSelector((state) => state.dashboard.stats)
+  //   );
   return (
     <div className="flex-1 bg-sky-950  text-sky-600 dark:text-teal-500 p-6">
       <h2 className="text-xl font-bold mb-6">Welcome, {username}</h2>
@@ -62,8 +63,18 @@ const DashboardMain = () => {
                   </span>
                   {/* Action Button */}
                   <div className="">
-                    <button className="p-1 bg-red">Delete</button>
-                    <button className="bg-white">Edit</button>
+                    <button
+                      className="p-1 bg-red"
+                      onClick={() => dispatch(setCount())}
+                    >
+                      Delete count
+                    </button>
+                    <button
+                      className="bg-white"
+                      onClick={() => dispatch(updateCount())}
+                    >
+                      Edit
+                    </button>
                   </div>
                 </div>
               ))}

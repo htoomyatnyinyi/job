@@ -4,7 +4,6 @@ import Info from "./Info";
 import LineGraph from "../global/LineGraph";
 import ResumeUploader from "../../resume/ResumeUploader";
 import DashboardMain from "./DashboardMain";
-import DashJobList from "./DashJobList";
 
 const Overview = () => {
   return (
@@ -25,7 +24,6 @@ const Overview = () => {
           </div>
         </div>
       </Dash>
-      <DashJobList />
       <ResumeUploader />
       {/* <UserLists /> */}
     </>

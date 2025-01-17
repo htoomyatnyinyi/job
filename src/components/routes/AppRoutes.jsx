@@ -11,7 +11,7 @@ import JobList from "../job/JobList.jsx";
 import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
 // import UserLists from "../dash/local/UserLists.jsx";
-import JobDetails from "../job/JobDetails.jsx";
+// import JobDetails from "../job/JobDetails.jsx";
 import JobForm from "../job/JobForm.jsx";
 import Info from "../dash/local/Info.jsx";
 import Resume from "../resume/Resume.jsx";
@@ -31,7 +31,7 @@ const AppRoutes = () => {
           {/* <Route path="/*" element={<NotFound />} /> */}
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/jobs" element={<JobList />} />
-          <Route path="/jobs/:id" element={<JobDetails />} />
+          {/* <Route path="/jobs/:id" element={<JobDetails />} /> */}
 
           <Route path="/create-job" element={<JobForm />} />
 

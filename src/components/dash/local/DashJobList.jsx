@@ -10,7 +10,6 @@ const DashJobList = () => {
   const dashboard = useSelector((state) => state.dashboard.dash);
   const status = useSelector((state) => state.dashboard.status);
   const error = useSelector((state) => state.dashboard.error);
-  console.log(dashboard, "check data ");
 
   const { users, jobs } = dashboard;
 
